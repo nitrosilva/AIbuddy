@@ -1,0 +1,151 @@
+from tkinter import *
+from PIL import Image, ImageTk
+import speech_to_text
+
+root = Tk()
+root.title("AI Assistant")
+root.geometry("500x680")
+root.resizable(False, False)
+root.config(bg="#6A8AAB")
+
+# --- Functions ---
+def ask():
+   user_val = speech_to_text.speech_to_text()
+   bot_val = action.Action(user_val)
+   text.insert(END, 'user--->'+ user_val+"\n")
+   if bot_val !=None:
+       text.insert(END, "BOT<---"+str(bot_val)+"\n")
+   if bot_val == 'ok sir':
+       root.destroy()
+
+
+def send():
+   send = entry1.get()
+   bot = action.Action(send)
+   text.insert(END, 'user--->'+ send+"\n")
+   if bot != None:
+       text.insert(END, "BOT<---"+str(bot)+"\n")
+   if bot=="ok sir":
+       root.destroy()
+
+def delete():
+    text.delete('1.0', "end")
+
+# --- Frame ---
+frame = LabelFrame(root, padx=8, borderwidth=4, relief="raised", bg="#6A8AAB")
+frame.grid(row=0, column=1, padx=56, pady=10)
+
+# --- Text Label ---
+text_label = Label(frame, text="AI Assistant", font=("Comic Sans MS", 14, "bold"), bg="#4677A7", fg="white")
+text_label.grid(row=0, column=0, padx=30, pady=10)
+
+# --- Image ---
+image = ImageTk.PhotoImage(Image.open(r"C:\Users\shivam\Desktop\pythonprojectsgg\AiAssist\image\ssis.png"))
+image_label = Label(frame, image=image)
+image_label.grid(row=1, column=0, pady=20)
+
+# --- Text Widget ---
+text = Text(root, font=('Courier', 10, 'bold'), bg="#2C67A2", fg="white")
+text.place(x=100, y=200, width=300, height=100)
+
+# --- Entry Widget ---
+entry1 = Entry(root, justify=CENTER)
+entry1.place(x=100, y=500, width=350, height=100)
+
+# --- Buttons ---
+Button1 = Button(root, text="Ask", bg="#356445", fg="white", pady=16, padx=40, borderwidth=4, relief=SOLID, command=ask)
+Button1.place(x=10, y=520)
+
+Button2 = Button(root, text="Send", bg="#356445", fg="white", pady=16, padx=40, borderwidth=4, relief=SOLID, command=send)
+Button2.place(x=200, y=520)
+
+Button3 = Button(root, text="Delete", bg="#356445", fg="white", pady=16, padx=40, borderwidth=4, relief=SOLID, command=delete)
+Button3.place(x=300, y=520)
+
+root.mainloop()
+
+
+
+# from tkinter import*
+# from PIL import Image , ImageTk
+# import action 
+# import speech_to_text 
+
+
+# def User_send():
+#     send = entry1.get()
+#     bot = action.Action(send)
+#     text.insert(END, "Me --> "+send+"\n")
+#     if bot != None:
+#         text.insert(END, "Bot <-- "+ str(bot)+"\n")
+#     if bot == "ok sir":
+#           root.destroy()  
+          
+
+# def ask():
+
+#     ask_val= speech_to_text.spech_to_text()
+#     bot_val = action.Action(ask_val)
+#     text.insert(END, "Me --> "+ask_val+"\n") 
+#     if bot_val != None:
+#        text.insert(END, "Bot <-- "+ str(bot_val)+"\n")
+#     if bot_val == "ok sir":
+#         root.destroy()
+
+# def delete_text():
+#     text.delete("1.0", "end")
+
+
+# root = Tk()
+# root.geometry("550x675")
+# root.title("AI Assistant")
+# root.resizable(False,False)
+# root.config(bg="#6F8FAF")
+
+  
+
+
+# # Main Frame
+# Main_frame = LabelFrame(root , padx=100 ,  pady=7 , borderwidth=3 ,  relief="raised")
+# Main_frame.config(bg="#6F8FAF")
+# Main_frame.grid(row = 0 ,  column= 1 ,  padx= 55 ,  pady =  10)
+
+# # Text Lable 
+# Text_lable = Label(Main_frame, text = "AI Assistant" , font=("comic Sans ms" ,  14 , "bold" ) , bg = "#356696")
+# Text_lable.grid(row=0 ,  column=0 , padx=20 , pady= 10)
+
+
+# # Image 
+# Display_Image = ImageTk.PhotoImage(Image.open(r"C:\Users\shivam\Desktop\pythonprojectsgg\AiAssist\image\ssis.png"))
+# Image_Lable = Label(Main_frame, image= Display_Image)
+# Image_Lable.grid(row = 1 ,  column=0 , pady=20)
+
+
+
+# # Add a text widget
+
+# text=Text(root , font= ('Courier 10 bold') , bg = "#356696")
+# text.grid(row = 2,  column= 0)
+# text.place(x= 100, y= 375, width= 375, height= 100) 
+
+
+
+
+# # Add a entry widget
+# entry1 = Entry(root, justify = CENTER)
+# entry1.place(x=100 , y = 500 , width= 350, height= 30)
+
+
+
+# # Add a text button1
+# button1 =  Button(root,  text="ASK" , bg="#356696" , pady=16 ,  padx=40,  borderwidth=3 , relief=SOLID ,  command=ask)
+# button1.place(x= 70, y= 575)
+
+# # Add a text button2
+# button2 =  Button(root,  text="Send" , bg="#356696" , pady=16 ,  padx=40,  borderwidth=3 , relief=SOLID ,  command=User_send)
+# button2.place(x= 400, y= 575)
+
+# # Add a text button3
+# button3 = Button(root, text="Delete", bg="#356696" , pady=16 ,  padx=40,  borderwidth=3 , relief=SOLID ,command=delete_text)
+# button3.place(x= 225, y= 575)
+# root.mainloop()
